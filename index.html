@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heaven Pool - Kakinada</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0b0f1a;color:white;overflow-x:hidden;}
+html{scroll-behavior:smooth;}
+
+/* NAV */
+nav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 60px;position:fixed;width:100%;
+    background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);
+    z-index:1000;
+}
+nav h1{color:#00eaff;}
+nav ul{display:flex;gap:25px;list-style:none;}
+nav a{color:white;text-decoration:none;transition:.3s;}
+nav a:hover{color:#00eaff;}
+.menu-icon{display:none;font-size:28px;cursor:pointer;color:#00eaff;}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('pool2.jpeg') center/cover fixed;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+}
+.hero-content{
+    background:rgba(0,0,0,0.5);
+    padding:50px;border-radius:20px;
+    backdrop-filter:blur(10px);
+    animation:fadeUp 1.5s ease;
+}
+.hero h2{font-size:clamp(32px,6vw,65px);}
+.hero p{margin:15px 0;font-size:18px;opacity:.9;}
+
+.btn{
+    padding:12px 25px;border:none;background:#00eaff;color:black;
+    border-radius:30px;cursor:pointer;transition:.3s;font-weight:600;
+    text-decoration:none;display:inline-block;
+}
+.btn:hover{transform:scale(1.08);background:white;}
+
+/* SECTION */
+section{padding:100px 60px;}
+.section-title{text-align:center;font-size:40px;color:#00eaff;margin-bottom:50px;}
+
+/* CARDS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+.card{
+    padding:30px;background:rgba(255,255,255,0.05);
+    border-radius:20px;transition:.4s;text-align:center;
+}
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    background:rgba(255,255,255,0.1);
+    box-shadow:0 20px 40px rgba(0,234,255,0.2);
+}
+
+/* PARALLAX */
+.image-section{
+    height:70vh;
+    display:flex;align-items:center;justify-content:center;
+    background-size:cover;background-position:center;
+    background-attachment:fixed;
+}
+.overlay-box{
+    background:rgba(0,0,0,0.6);
+    padding:30px;border-radius:20px;
+    backdrop-filter:blur(10px);
+    text-align:center;
+}
+.overlay-box h2{font-size:clamp(22px,4vw,38px);}
+
+/* GALLERY */
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+.img-box{position:relative;height:300px;border-radius:20px;overflow:hidden;}
+.img-box img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+.img-box:hover img{transform:scale(1.1);}
+.overlay{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.7);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;transition:.5s;
+}
+.img-box:hover .overlay{opacity:1;}
+.overlay h3{color:#00eaff;text-align:center;padding:20px;}
+
+/* FORM */
+.booking-form{
+    max-width:600px;margin:auto;
+    background:rgba(255,255,255,0.05);
+    padding:40px;border-radius:20px;
+}
+.booking-form input, .booking-form textarea{
+    width:100%;padding:15px;margin:10px 0;
+    border-radius:10px;border:none;outline:none;
+    font-family:'Poppins',sans-serif;
+    background: rgba(255,255,255,0.9);
+    color: #000;
+}
+.form-row{display:flex;gap:15px;}
+
+/* FOOTER */
+footer{text-align:center;padding:30px;background:#05070c;color:#666;}
+
+/* MOBILE */
+@media(max-width:768px){
+    nav{padding:15px 20px;}
+    nav ul{
+        position:absolute;top:60px;left:0;width:100%;
+        background:#000;flex-direction:column;
+        display:none;padding:20px;
+    }
+    nav ul.active{display:flex;}
+    .menu-icon{display:block;}
+    section{padding:60px 20px;}
+    .image-section{background-attachment:scroll;}
+    .form-row{flex-direction:column; gap:0;}
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h1>The Heaven Pool</h1>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <ul id="menu">
+        <li><a href="#hero" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#features" onclick="toggleMenu()">Features</a></li>
+        <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+        <li><a href="#enquire" class="btn" onclick="toggleMenu()">Enquire Now</a></li>
+    </ul>
+</nav>
+
+<section id="hero" class="hero">
+    <div class="hero-content">
+        <h2>THE HEAVEN POOL</h2>
+        <p>Where Every Celebration Becomes an Experience</p>
+        <a href="#enquire" class="btn">Enquire Now</a>
+    </div>
+</section>
+
+<section id="features">
+    <h2 class="section-title">Luxury Highlights</h2>
+    <div class="grid">
+        <div class="card">✨ Designed to host 150+ guests</div>
+        <div class="card">💧 Titanic-style pool view</div>
+        <div class="card">🌧️ Rain dance arena</div>
+        <div class="card">🏛️ Luxury banquet hall</div>
+        <div class="card">🛏️ Premium suite rooms</div>
+        <div class="card">🎥 Poolside screen</div>
+    </div>
+</section>
+
+<section class="image-section" style="background-image:url('pool2.jpeg')">
+    <div class="overlay-box"><h2>Where Water Meets Luxury</h2></div>
+</section>
+
+<section class="image-section" style="background-image:url('pool3.jpeg')">
+    <div class="overlay-box"><h2>Host Grand Events in Style</h2></div>
+</section>
+
+<section class="image-section" style="background-image:url('pool.jpeg')">
+    <div class="overlay-box"><h2>Elegance That Leaves an Impression</h2></div>
+</section>
+
+<section id="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <div class="gallery-grid">
+        <div class="img-box">
+            <img src="pool2.jpeg" alt="Luxury Pool">
+            <div class="overlay"><h3>Luxury Pool Nights</h3></div>
+        </div>
+        <div class="img-box">
+            <img src="pool3.jpeg" alt="Banquet Setup">
+            <div class="overlay"><h3>Perfect Event Setup</h3></div>
+        </div>
+        <div class="img-box">
+            <img src="pool.jpeg" alt="Premium Interiors">
+            <div class="overlay"><h3>Premium Interiors</h3></div>
+        </div>
+    </div>
+</section>
+
+<section id="enquire">
+    <h2 class="section-title">Make an Enquiry</h2>
+    <div class="booking-form">
+        <form onsubmit="sendEmail(event)">
+            <input type="text" id="name" required placeholder="Your Full Name">
+            
+            <div class="form-row">
+                <input type="date" id="date" required title="Expected Date">
+                <input type="number" id="guests" min="1" placeholder="Estimated Guests">
+            </div>
+            
+            <textarea id="details" rows="4" required placeholder="Tell us about your event or requirements..."></textarea>
+            
+            <button type="submit" class="btn" style="width:100%; margin-top:10px;">Send Enquiry</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    © 2026 The Heaven Pool, Kakinada
+</footer>
+
+<script>
+// Mobile Menu Toggle
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+
+// Email Enquiry Logic
+function sendEmail(e) {
+    e.preventDefault(); 
+
+    const name = document.getElementById('name').value;
+    const date = document.getElementById('date').value || 'Not specified';
+    const guests = document.getElementById('guests').value || 'Not specified';
+    const details = document.getElementById('details').value;
+
+    const email = "theheavenpoolminimultifunction@gmail.com";
+    const subject = encodeURIComponent(`Website Enquiry: ${name} - The Heaven Pool`);
+    
+    const body = encodeURIComponent(
+        `Hello The Heaven Pool Team,\n\n` +
+        `I have an enquiry regarding your venue:\n\n` +
+        `Name: ${name}\n` +
+        `Expected Date: ${date}\n` +
+        `Estimated Guests: ${guests}\n\n` +
+        `Message / Details:\n${details}\n\n` +
+        `Please get back to me. Thank you!`
+    );
+
+    // Open default email app
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+}
+</script>
+
+</body>
+</html>
